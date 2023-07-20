@@ -1,8 +1,10 @@
 package com.cydeo;
 
-public class Main {
+public class X {
     public static void main(String[] args) {
 
-        System.out.println("Hello world!");
+        Z z = new Y();
+        z.method();
+
     }
 }
