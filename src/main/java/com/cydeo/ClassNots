@@ -1,0 +1,89 @@
+SOLID Principles Notes
+
+Robert C. Martin (Uncle Bob) -> Put all these principles together as fundemental principles in software development
+Michael Feathers -> Friend of Uncle Bob, he came up with the "SOLID" acronym.
+
+- Why using principles?
+	* To make your code
+		** understandable
+		** readable
+		** testable
+		** maintainable
+	* So that everyone in the project can work collaboratively without having any issue.
+
+- Almost 20 percent of the developers are between 18 and 24. And almost 50 percent of the developers are between 25 - 34.
+- So it is very likely to work with someone who has no experience or a little experience.
+- It means it is very likely to face with some bad code, which is normal.
+
+https://truelist.co/blog/software-development-statistics/
+
+-----------------------------------------------------------------------------------------------------
+
+- Bad Code: Confusing -> Good code should explain itself.
+
+	* 1. Symptom -> Rigidity -> Bad Dependencies -> This refers to code being difficult to change. Code is tightly coupled. One change causes a cascade of subsequent changes in dependent modules. This results in managers fearing to fix non-critical problems because they do not know the impact of one change or how long it will take. This is the all too common. “No changes to the code unless it is a critical fix that we need to make,” and thus the code becomes rigid.
+
+	* 2. Symptom -> Fragility -> Fragility is closely related to rigidity, but refers to software that tends to break in many places every time it is changed, even in areas that are conceptually unrelated. As this increases, software becomes impossible to maintain because every fix introduces 5 new bugs and now we are playing a game of whack-a-bug.
+
+	* 2. Symptom -> Immobility -> Immobility refers to the inability to reuse software from other parts of the system. If we need a module that is similar to another one we already have, when we try to re-use it, however, the module has too much baggage around it. It is hard and risky to separate the desirable part from the undesirable part so we decide that it is easier to rewrite and duplicate the code we need instead of reusing it.
+
+	* 2. Symptom -> Viscosity -> Viscosity is the resistance against making a change. From a design point of view, whenever we need to make a change we think it through and solve it the right way, or we can find a quick and dirty hack. The environment we work in sometimes pushes us towards the hacking approach. If compile time takes too long, instead of applying a change where it belongs, we start thinking of a place to make the change that does not require a full recompile. If check-in takes a long time, we start thinking of ways to make changes that require touching the fewest files. If deployment is a hassle, we start making changes in the database instead of the code because running a database script might be easier and safer than re-deploying the entire application. So instead of making a change in the appropriate place, we end up making the change in the place that provides the least resistance.
+
+	Example -> (Logging vs System.out.println("Some logs..."))
+
+- Main is the start point, and it calls another method from another class/module, and that class/module calls another class/module, and that class/module calls another class/module...
+	* Flow of Control -> It goes downwards.
+	* Main -> High Level Class/Module -> Mid Level Class/Module -> Low Level Class/Module
+	* Which of the modules know about the others?
+	* Source Code Dependency.
+	* Do you want your high level policy, polluted with low level details? It makes code hard to read. A change to a detail, effecting high level policy is wrong.
+	* High level policy should be immune from details.
+	* The high level modules depend on the low level modules, which is not good. What happens, if something in some low level module gets broken? The whole application will crash because the high level modules depend on the low level modules.
+
+- What if we use Interface between in those depended modules?
+	* Flow of control will still be the same, but the source code dependency will change. The source code dependency will point against the flow of control.
+
+- Tightly Coupled -> Modules depended on each other directly
+- Loosely Coupled -> Modules don't depend on each other directly, there is an abstraction level between them.
+
+- How changing the direction of the source code dependency will make things better for us? We will see it while we are talking about the SOLID Principles.
+
+- SRP: The Single Responsibility Principle
+- OCP: The Open/Closed Principle
+- LSP: The Liskov's Substitution Principle
+- ISP: The Interface Segregation Principle
+- DIP: The Dependency Inversion Principle
+
+- SOLID
+
+- SRP: The Single Responsibility Principle:
+	* A class should have one, and only one, reason to change.
+	* Controller -> Manager(Validation) -> Security -> Service(CRUD) -> Repository(Database)
+
+- OCP: The Open/Closed Principle
+	* A class/module should be open for extension, but closed for modification
+	* Means we should be able to change the behavior of a module, without changing the module.
+	* If you implement it successfully, you should be able add a new feature to the application by writing a new code, and not changing any old code.
+	* Shape and draw example, DrawAllShapes is the high level policy and doesn't know about the other shapes, which are the low level policies
+	* Calculator -> Operation example
+
+- LSP: The Liskov's Substitution Principle
+	* Derived classes must be usable through the base class/interface, without the need for the user to know the difference.
+	* Rectangle, Square example
+	* Yes, a square is a rectangle, but the class rectangle is not a rectangle and the class square is not a square.
+	* Class rectangle represents a rectangle, and class square represents a square.
+	* But the representatives of things, do not share the relationships of the things they represent.
+	* Divorce lawyers example
+
+- ISP: The Interface Segregation Principle
+	* A client shouldn't be forced to implement an interface or depend on a method it does not use.
+	* Bird, fly() example
+
+Note: Difference between LSP and ISP -> LSP: We need to substitute the subclasses from their parents.
+										ISP: We need to divide a bigger interface to smaller pieces.
+
+- DIP: The Dependency Inversion Principle
+	* Entities must depend on abstractions, not on concretions. The high level modules must not depend on the low level modules.
+	* Example about connecting a light bulb directly to a battery or connecting it to a switch and connecting switch to a battery.
+	* FileReader example -> SQLReader, JSONReader, XMLReader, TextFileReader
+	* So in here the high level module has a dependency on a low level module.

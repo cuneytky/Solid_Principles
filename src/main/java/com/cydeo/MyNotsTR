@@ -1,0 +1,64 @@
+SOLID, her yazılımcının bilmesi gereken temel prensipler bütünüdür.
+ Robert C. Martin tarafından ileri sürülen ve kısaltması Michael Feathers
+tarafından düşünülen bu prensiplerin amacı;
+kod tekrarına düşmeyerek, sürdürülebilir, anlaşılabilir, esnek
+ve yeniden kullanılabilir yazılımlar geliştirmektir.
+
+Nedir Bu SOLID Prensipleri?
+SOLID prensipleri, bir yazılım geliştiricinin Nesne Yönelimli Programlama (OOP) ile yazılım geliştirirken,
+geliştirdiği yazılımın esnek ve geliştirilmeye uygun olması için uyması gereken kurallar bütünüdür.
+Bu prensipler doğrultusunda geliştirdiğimiz uygulamalarımız ne kadar büyük olursa olsun,
+karmaşıklık asla söz konusu olmaz. “Spaghetti Code” dediğimiz karmaşık kodlar yerine,
+ “Clean Code” yazmamızı da yine bu prensipler sağlamaktadır.
+
+Dünya standartlarında yazılım geliştirmemize olanak sağlayan bu prensipleri 5 ana başlıkta ele alabiliriz.
+1. S-Single Responsibility Principle
+2. O-Open/Closed Principle
+3. L-Liskov Substitution Principle
+4. I-Interface Segregation Principle
+5. D-Dependency Inversion Principle
+
+1- Single Responsibility Principle
+Türkçe karşılığı “Tek Sorumluluk” anlamına gelen bu prensipte amaç; geliştirilen projede bir güncelleme
+veya değişiklik yapılması istendiğinde kodların içinde kaybolmadan, yalnızca ilgili metoda giderek
+istenilen değişikliğin yapılmasının sağlanmasıdır. Biraz daha açacak olursak; bir fonksiyona birden
+fazla iş verip onu birçok işten sorumlu tutmak yerine, her bir iş için ayrı bir metot oluşturmalı ve
+ ilerleyen zamanlarda bir değişiklik yapılacağında da kolaylıkla ilgili metoda giderek gerekli
+değişiklikleri yapabilmeliyiz.
+
+solid prensipleri
+Photo by Ugonna Thelma on Medium
+2- Open/Closed Principle
+Türkçe çevirisi “Açık/Kapalı” olan prensip, projede geliştirilen nesnelerin geliştirilmeye açık
+ama değişime kapalı olmaları gerektiğini ifade eder. Yani bir nesne davranışını değiştirmeden
+yeni özellikler kazabiliyor olmalıdır. Bu prensip, sürdürülebilir ve tekrar kullanılabilir yapıda
+ kod yazmanın temelini oluşturur.
+
+solid prensipleri
+Photo by Ugonna Thelma on Medium
+3- Liskov Substitution Principle
+“Yerine Geçme” olarak Türkçeye çevirdiğimiz prensibe göre; miras alarak türemiş olan class’ların
+ önce miras aldıkları nesnenin tüm özelliklerini kullanması, daha sonra da kendi özelliklerini
+barındırması gerekir. Eğer oluşturduğumuz class, miras aldığı nesnenin ‘tüm’ özelliklerini kullanmayacaksa
+ ortaya gereksiz kod blokları çıkar ve bu da bir geliştiricinin isteyeceği en son şeydir. Çünkü bir
+geliştirici her daim ‘Clean Code’ yazmaya çalışır.
+
+solid principles
+Photo by Ugonna Thelma on Medium
+4- Interface Segregation Principle
+“Arayüz Ayırımı” prensibinde; bir interface’e gerekenden fazla sorumluluk eklemek yerine,
+daha özelleştirilmiş birden fazla interface oluşturulmalıdır. Nesneler, ihtiyacı olmayan
+özellik veya metotlar içeren interface’leri miras almaya zorlanmamalıdır. Sizinde farkettiğiniz
+üzere “Single Responsibility” ve “Interface Segregation” prensipleri birbirine oldukça benzemekte
+ ve aynı amaca hizmet etmektedirler. Ancak burada gözden kaçırılmaması gereken en önemli husus şudur
+ ki; ‘Interface Segregation’ prensibi interface’ler ile ilgilenirken, ‘Single Responsibility’ prensibi
+class’lar ile ilgilenmektedir.
+
+
+Photo by Ugonna Thelma on Medium
+5- Dependency Inversion Principle
+Türkçe karşılığı “Bağımlılığın Ters Çevrilmesi” olan bu prensibe göre; alt sınıflarda yapılan değişiklikler
+ üst sınıfları etkilememelidir yani sınıflar arası bağımlılıklar olabildiğince az olmalıdır ve özellikle
+üst seviye sınıflar, alt seviye sınıflara bağımlı olmamalıdır. Peki burada ne yapmalıyız? Burada yüksek
+seviye sınıf ile düşük seviye sınıf arasında bir soyutlama katmanı oluşturarak her iki sınıfı da soyut
+kavramlar üzerinden yönetmeliyiz.
